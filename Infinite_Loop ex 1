@@ -1,0 +1,143 @@
+
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int choice = 0;
+
+	string name = "";
+	string age = "";
+	string occup = "";
+
+	while (choice != -1)
+	{
+		cout << "-1: Exit\n";
+		cout << "1: Enter Name\n";
+		cout << "2: Enter Age\n";
+		cout << "3: Enter Occupation\n";
+		cin >> choice;
+
+		/*if (choice == -1)
+			break;*/
+
+		switch (choice)
+		{
+		case 1:
+			cout << "What is your Name: ";
+			cin >> name;
+			break;
+		case 2:
+			cout << "What is your Age? ";
+			cin >> age;
+			break;
+		case 3:
+			cout << "What is your Occupation? ";
+			cin >> occup;
+			break;
+		default:
+			// Assume Invalid Menu Choice
+			cout << "Sorry that choice is not valid!";
+			break;
+		}
+	}
+
+	age += 1;
+
+	cout << "Thank you for using our application, " << name << " and hope your career in " << occup << " is successful.";
+	cout << "Hope your " << age << " birthday will enjoyable and exciting";
+
+	return 0;
+}
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+//fixing the infinit loop 
+
+
+#include <iostream>
+#include<ios>
+#include<limits>
+#include<ctype.h> 
+#include<sstream>
+#include<cctype>
+
+using namespace std;
+
+#define MAX_LENGTH 100
+
+int main()
+{
+	int choice = 0;
+	int span = 3; 
+	
+	string name = " ";
+	int age;
+	string occup = " ";
+	
+
+	while (choice != -1 && span > 0)
+	{
+		cout << "-1: Exit\n";
+		cout << "1: Enter Name\n";
+		cout << "2: Enter Age\n";
+		cout << "3: Enter Occupation\n";
+		cin >> choice;
+		span = span - 1;
+
+		/*if (choice == -1)
+			break;*/
+
+		switch (choice)
+		{
+		case 1:
+			cout << "What is your Name: ";
+			cin >> name;
+			cin.ignore();
+			getline ( cin, name);
+			cout << "choose the next option\n"; 
+			break;
+		case 2:
+	
+            cout << "What is your Age? ";
+			cin >> age; 
+		   
+			while (!cin)
+			{
+			    
+			    cin.clear();
+			    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			    cout << "Invalid please enter a number\n\n";
+			    cin >> age;
+		}
+		break;
+		case 3:
+			cout << "What is your Occupation? ";
+			cin >> occup;
+			cin.ignore();
+			getline (cin, occup);
+			break;
+		
+		
+			
+		default:
+			// Assume Invalid Menu Choice
+			cout << "Sorry that choice is not valid!";
+			return 0; 
+			break;
+			
+		}
+	}
+
+	age += 1;
+
+	cout << "\n Thank you for using our application, " << name << " and hope your career in " << occup << " is successful.";
+	cout << " Hope your " << age << " birthday will enjoyable and exciting";
+
+	return 0;
+}
+
